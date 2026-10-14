@@ -1,0 +1,225 @@
+:root{
+    --poudre: #F8E1E7;
+    --blush: #F4C7D0;
+    --creme: #FFF8F5;
+    --or-rose: #B76E79;
+    --encre: #3A2E32;
+    --serif: "Comorant Garamond", Georgia, serif;
+    --sans: "Jost, Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+        --poudre: #3a2a30;
+        --blush: #5a3a44;
+        --creme: #2a1f23;
+        --or-rose: #e0a0aa;
+        --encre: #f6e9ec;
+    }
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: var(--sans);
+    font-weight: 300;
+    color: var(--encre);
+    background: var(--creme);
+    line-height: 1.7;
+    padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+}
+
+a, button{
+    font: inherit;
+}
+:focus-visible{
+    outline: 2px solid var(--or-rose);
+    outline-offset: 4px;
+}
+
+/*ACCUEIL*/
+
+.hero{
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: radial-gradient(60% 50% at 20% 15%, var(--blush) 0%, transparent 70%),
+    radial-gradient(55% 45% at 85% 90%, var(--poudre) 0%, transparent 70%),
+    var(--creme);
+}
+
+.hero h1{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 11vw, 5.2rem);
+    line-height: 1.85;
+    letter-spacing: -0.01em;
+    max-width: 11ch;
+    margin: 0 auto 1.25rem;
+    animation: entree 1.4s ease both;
+}
+
+.hero p{
+    font-size: 1.05rem;
+    max-width: 30ch;
+    margin: 0 auto 2.5rem;
+    opacity: .8;
+    animation: entree 1.4s .25s ease both;
+}
+
+.btn{
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid var(--or-rose);
+    background: transparent;
+    color: var(--or-rose);
+    padding: .85rem 2.2rem;
+    border-radius: 999px;
+    font-weight: 400;
+    letter-spacing: .02rem;
+    text-decoration: none;
+    transition: background .3s, color .3s;
+    animation: entree 1.4s ease both;
+}
+
+.btn:hover{
+    background: var(--or-rose);
+    color: var(--creme);
+}
+
+.btn.plein{
+    background: var(--or-rose);
+    color: var(--creme);
+}
+
+.btn.plein:hover{
+    filter: brightness(1.08);
+}
+
+@keyframes entree{
+    from{
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to{
+        opacity: 1; 
+        transform: none;
+    }
+}
+
+/*LETTRE*/
+
+.lettre{
+    display: none;
+    padding: 4rem 1.25rem 3rem;
+    background: linear-gradient(180deg, var(--creme), var(--poudre));
+}
+
+.lettre.ouverte{
+    display: block;
+}
+
+.papier{
+    max-width: 34rem;
+    margin: 0 auto;
+    background: var(--creme);
+    border-radius: 2rem 2rem 2rem 0.4rem;
+    padding: clamp(2rem, 8vw, 3.3rem) clamp(1.5rem, 7vw, 3rem);
+    box-shadow: 0 30px 60px -30px rgba(.2, .8, .2, 1);
+    transform-origin: top center;
+    animation: deplier .9s cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes deplier{
+    from{
+        opacity: 0;
+        transform: perspective(900px) rotate(-14deg) scaleY(.92);
+    }
+    to{
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.papier h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    margin-bottom: 1.5rem;
+}
+
+.papier p{
+    margin-bottom: 1.1rem;
+    max-width: 60ch;
+}
+
+.declaration{
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.mot{
+    margin: 2rem 0 1.5rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--blush);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+}
+
+.signature{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--or-rose);
+    text-align: right;
+    margin-top: 2rem;
+}
+
+/*REPONSE*/
+
+.reponse{
+    max-width: 34rem;
+    margin: 2.5rem;
+    text-align: center;
+}
+.reponse p{
+    margin-bottom: 1.2rem;
+    opacity: .85;
+}
+.actions{
+    display: flex;
+    gap: .75rem;
+    justify-content: center
+}
+
+/*FOOTER*/
+
+footer{
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--or-rose);
+    background: var(--poudre);
+}
+
+/*ACCESSIBILITE*/
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
